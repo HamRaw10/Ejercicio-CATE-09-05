@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memotest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=PocketMonk&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>MEMOTEST DE LOS POKEMON</h1>
+        
+        <div class="game-info">
+            <div class="player-turn">
+                <h2>Turno de: <span id="current-player">Jugador 1</span></h2>
+            </div>
+            <div class="scores">
+                <div class="player-score player1">
+                    <h3>Jugador 1</h3>
+                    <p>Aciertos: <span id="score-1">0</span></p>
+                </div>
+                <div class="player-score player2">
+                    <h3>Jugador 2</h3>
+                    <p>Aciertos: <span id="score-2">0</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-board" id="game-board"></div>
+        
+        <div class="game-over" id="game-over">
+            <h2 id="winner-message"></h2>
+            <button id="restart-btn">Volver A Jugar</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

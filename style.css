@@ -1,0 +1,239 @@
+@font-face {
+    font-family: 'PocketMonk';
+    src: url('https://fonts.googleapis.com/css2?family=PocketMonk&display=swap');
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    background-color: #f5f5f5;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    max-width: 900px;
+    width: 95%;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'PocketMonk', sans-serif;
+    color: #ffcb05;
+    -webkit-text-stroke: 2px #2a75bb;
+    text-shadow: 4px 4px 0 #3c5aa6;
+    font-size: 3rem;
+    margin: 10px 0 25px;
+    letter-spacing: 3px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.player-turn h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.scores {
+    display: flex;
+    gap: 20px;
+}
+
+.player-score {
+    background-color: #e9e9e9;
+    padding: 12px 18px;
+    border-radius: 8px;
+    min-width: 110px;
+}
+
+.player1 {
+    border-left: 5px solid #ff0000;
+}
+
+.player2 {
+    border-left: 5px solid #3c5aa6;
+}
+
+.player-score h3 {
+    margin: 0 0 8px 0;
+    color: #2a75bb;
+    font-size: 1.1rem;
+}
+
+.player-score p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    height: 130px;
+    background-color: #2a75bb;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card.flipped {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+.card img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateY(180deg);
+}
+
+.card .card-back {
+    width: 100%;
+    height: 100%;
+    background-color: #2a75bb;
+    background-image: linear-gradient(135deg, #2a75bb 0%, #3c5aa6 100%);
+    border-radius: 10px;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffcb05;
+    font-weight: bold;
+    font-size: 28px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+#restart-btn {
+    background-color: #ffcb05;
+    color: #2a75bb;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 0 #c7a008;
+    margin-top: 10px;
+}
+
+#restart-btn:hover {
+    background-color: #ffde59;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #c7a008;
+}
+
+#restart-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #c7a008;
+}
+
+.game-over {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.game-over h2 {
+    color: #ffcb05;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 4px 4px 0 #3c5aa6;
+    font-family: 'PocketMonk', sans-serif;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        -webkit-text-stroke: 1px #2a75bb;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .player-score {
+        min-width: 90px;
+        padding: 10px 12px;
+    }
+    
+    .card {
+        height: 100px;
+    }
+    
+    .game-over h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
